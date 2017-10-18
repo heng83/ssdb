@@ -223,7 +223,8 @@ int SSDBImpl::key_range(std::vector<std::string> *keys){
 		Bytes ks = it->key();
 		if(ks.data()[0] == DataType::KV){
 			std::string n;
-			if(decode_kv_key(ks, &n) == -1){
+			uint16_t slot;
+			if(decode_kv_key(ks, &n, &slot) == -1){
 				ret = -1;
 			}else{
 				kstart = n;
@@ -237,7 +238,8 @@ int SSDBImpl::key_range(std::vector<std::string> *keys){
 		Bytes ks = it->key();
 		if(ks.data()[0] == DataType::KV){
 			std::string n;
-			if(decode_kv_key(ks, &n) == -1){
+			uint16_t slot;
+			if(decode_kv_key(ks, &n, &slot) == -1){
 				ret = -1;
 			}else{
 				kend = n;
@@ -251,7 +253,8 @@ int SSDBImpl::key_range(std::vector<std::string> *keys){
 		Bytes ks = it->key();
 		if(ks.data()[0] == DataType::HSIZE){
 			std::string n;
-			if(decode_hsize_key(ks, &n) == -1){
+			uint16_t slot;
+			if(decode_hsize_key(ks, &n, &slot) == -1){
 				ret = -1;
 			}else{
 				hstart = n;
@@ -265,7 +268,8 @@ int SSDBImpl::key_range(std::vector<std::string> *keys){
 		Bytes ks = it->key();
 		if(ks.data()[0] == DataType::HSIZE){
 			std::string n;
-			if(decode_hsize_key(ks, &n) == -1){
+			uint16_t slot;
+			if(decode_hsize_key(ks, &n, &slot) == -1){
 				ret = -1;
 			}else{
 				hend = n;
@@ -279,7 +283,8 @@ int SSDBImpl::key_range(std::vector<std::string> *keys){
 		Bytes ks = it->key();
 		if(ks.data()[0] == DataType::ZSIZE){
 			std::string n;
-			if(decode_zsize_key(ks, &n) == -1){
+			uint16_t slot;
+			if(decode_zsize_key(ks, &n, &slot) == -1){
 				ret = -1;
 			}else{
 				zstart = n;
@@ -293,7 +298,8 @@ int SSDBImpl::key_range(std::vector<std::string> *keys){
 		Bytes ks = it->key();
 		if(ks.data()[0] == DataType::ZSIZE){
 			std::string n;
-			if(decode_zsize_key(ks, &n) == -1){
+			uint16_t slot;
+			if(decode_zsize_key(ks, &n, &slot) == -1){
 				ret = -1;
 			}else{
 				zend = n;
@@ -307,7 +313,8 @@ int SSDBImpl::key_range(std::vector<std::string> *keys){
 		Bytes ks = it->key();
 		if(ks.data()[0] == DataType::QSIZE){
 			std::string n;
-			if(decode_qsize_key(ks, &n) == -1){
+			uint16_t slot;
+			if(decode_qsize_key(ks, &n, &slot) == -1){
 				ret = -1;
 			}else{
 				qstart = n;
@@ -321,7 +328,8 @@ int SSDBImpl::key_range(std::vector<std::string> *keys){
 		Bytes ks = it->key();
 		if(ks.data()[0] == DataType::QSIZE){
 			std::string n;
-			if(decode_qsize_key(ks, &n) == -1){
+			uint16_t slot;
+			if(decode_qsize_key(ks, &n, &slot) == -1){
 				ret = -1;
 			}else{
 				qend = n;
